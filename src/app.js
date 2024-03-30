@@ -19,13 +19,13 @@ document.getElementById("agregarTarea").addEventListener("click", e => {
   tareas.push(nuevaTarea);
   document.getElementById("introducirTarea").value = "";
   tareas.map(tarea => {
-    listaTareas.innerHTML += `<li>${tarea}</li>`;
+    listaTareas.innerHTML += `<li>${tarea}<i class="fa-solid fa-xmark" id="${tareas[tarea]}" style="color: #ff3300;"></i></li>`;
   });
-  document.get;
-  let tareaIndependiente = document.querySelectorAll("li");
-  tareaIndependiente.forEach(LI =>
-    LI.addEventListener("click", e => {
-      LI.parentNode.removeChild(LI);
+  let tareaIndependiente = document.querySelectorAll("i");
+  tareaIndependiente.forEach(icono =>
+    icono.addEventListener("click", e => {
+      let liPadre = icono.parentNode;
+      liPadre.parentNode.removeChild(liPadre);
     })
   );
 });
