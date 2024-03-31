@@ -20,20 +20,22 @@
     <div class="row mt-3">
       <div class="col-md-4"></div>
       <div class="col-md-4">
-        <div class="card text-center" id="tarjetaFlotante">
-          <div class="card-body">
-            <h1 class="card-title">LISTA TODO</h1>
-            <div class="input-group mb-3">
-              <input
-                type="text"
-                class="form-control shadow-none"
-                id="introducirTarea"
-                placeholder="What needs to be done?"
-              />
+        <div class="card shadow">
+          <div class="card " id="tarjetaFlotante">
+            <div class="card-body">
+              <h1 class="card-title p-1 text-center">TODO LIST</h1>
+              <div class="input-group">
+                <input
+                  type="text"
+                  class="form-control shadow-none"
+                  id="introducirTarea"
+                  placeholder="What needs to be done?"
+                />
+              </div>
+              <ul class="list-group" id="listaTareas"></ul>
             </div>
-            <ul class="list-group" id="listaTareas"></ul>
+            <p id="counterTasks" class="small text-left ms-3"></p>
           </div>
-          <p id="counterTasks" class="mx-auto"></p>
         </div>
       </div>
       <div class="col-md-4"></div>
