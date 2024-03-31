@@ -10,22 +10,42 @@ window.onload = function() {
 };
 
 let listaTareas = document.querySelector("ul");
-
+let counter = 0;
 let tareas = [];
 
+// Listener para cuadno le damos click a añadir nueva tarea
 document.getElementById("agregarTarea").addEventListener("click", e => {
+  // Cogemos el valor del input
   let nuevaTarea = document.getElementById("introducirTarea").value;
-  tareas = [];
+  // Subimos el valor al array
   tareas.push(nuevaTarea);
+  // Borramos el contenido del input
   document.getElementById("introducirTarea").value = "";
-  tareas.map(tarea => {
-    listaTareas.innerHTML += `<li>${tarea}<i class="fa-solid fa-xmark" id="${tareas[tarea]}" style="color: #ff3300;"></i></li>`;
-  });
-  let tareaIndependiente = document.querySelectorAll("i");
-  tareaIndependiente.forEach(icono =>
-    icono.addEventListener("click", e => {
-      let liPadre = icono.parentNode;
-      liPadre.parentNode.removeChild(liPadre);
-    })
-  );
+
+  // Llamamos la funcion de renderizar
+  renderizarTareas();
 });
+
+// Funcion window hace que sea global para toda la pagina
+window.borrarTarea = function() {
+  // Con el click lo que hacemos es declarar el padre del elemento que estemos pulsando
+  let liPadre = event.target.previousSibling.textContent;
+  // Establecemos una variable para identificar el indice de la tarea qeu queremos borrar
+  let i = tareas.indexOf(liPadre);
+  // Borramos dicha tarea del array
+  tareas.splice(i, 1);
+  // Llamamos la funcion renderizar
+  renderizarTareas();
+};
+
+// La funcion renderizar basicamente lo que hace es recargar la lista de ul en base al array de tareas
+function renderizarTareas() {
+  // Limpiamos el contenido de la listaTareas
+  listaTareas.innerHTML = "";
+  // Por cada elemento en el array de tareas, creamos un elemento li con un texto y un <i> dentro que contiene el onlcick de la funcion borrar
+  tareas.forEach((tarea, i) => {
+    listaTareas.innerHTML += `<li>${tarea}<i class="fa-solid fa-xmark" onclick="borrarTarea(${i})" style="color: #ff3300;"></i></li>`;
+  });
+}
+
+window.onload = renderizarTareas();
