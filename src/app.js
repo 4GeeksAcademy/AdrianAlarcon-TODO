@@ -45,22 +45,22 @@ function renderizarTareas() {
     listaTareas.innerHTML += `<li>${tarea}<i class="fa-solid fa-xmark" onclick="borrarTarea(${i})" style="color: #ff3300;"></i></li>`;
   });
 }
-window.ContarTareas = function(tipo) {
-  let contador = document.getElementById("counterTasks").value;
-  switch (tipo) {
-    case "suma":
-      tareas.forEach(i => {
-        contador++;
-      });
-      break;
-    case "resta":
-      tareas.forEach(i => {
-        contador--;
-      });
-    default:
-      break;
-  }
 
-  document.getElementById("counterTasks").innerHTML = contador;
+window.ContarTareas = function(tipo) {
+  if (tipo == "suma") {
+    counter++;
+  } else if (tipo == "resta") {
+    counter--;
+  }
+  document.getElementById("counterTasks").innerHTML = `${counter} items left`;
+  comprobarTaras();
 };
+
+window.comprobarTaras = function() {
+  if (counter == 0) {
+    document.getElementById("counterTasks").innerHTML = `No tasks, add a task`;
+  }
+};
+
 window.onload = renderizarTareas();
+window.onload = comprobarTaras();
