@@ -10,7 +10,6 @@ let counter = 0;
 let tareas = [];
 
 // Listener para cuadno le damos click a añadir nueva tarea
-document.getElementById("agregarTarea").addEventListener("click", agregarTarea);
 document.getElementById("introducirTarea").addEventListener("keypress", e => {
   if (e.key === "Enter") {
     agregarTarea();
@@ -51,7 +50,7 @@ function renderizarTareas() {
   listaTareas.innerHTML = "";
   // Por cada elemento en el array de tareas, creamos un elemento li con un texto y un <i> dentro que contiene el onlcick de la funcion borrar
   tareas.forEach((tarea, i) => {
-    listaTareas.innerHTML += `<li>${tarea}<i class="fa-solid fa-xmark" onclick="borrarTarea(${i})" style="color: #ff3300;"></i></li>`;
+    listaTareas.innerHTML += `<li class="list-group-item">${tarea}<button class="btn btn-light"><i class="fa-solid fa-xmark" onclick="borrarTarea(${i})" style="color: #ff3300;"></i></button></li>`;
   });
 }
 

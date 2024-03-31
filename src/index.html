@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hello Rigo with Vanilla.js</title>
+    <title>TO DO LIST</title>
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
@@ -17,12 +17,26 @@
     <link rel="shortcut icon" href="./4geeks.ico" />
   </head>
   <body>
-    <div class="container text-center">
-      <h1>LISTA TODO</h1>
-      <input type="text" name="" id="introducirTarea" pattern="" />
-      <button id="agregarTarea">Confirmar</button>
-      <ul class="bg-warning"></ul>
-      <p id="counterTasks"></p>
+    <div class="row mt-3">
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+        <div class="card text-center" id="tarjetaFlotante">
+          <div class="card-body">
+            <h1 class="card-title">LISTA TODO</h1>
+            <div class="input-group mb-3">
+              <input
+                type="text"
+                class="form-control shadow-none"
+                id="introducirTarea"
+                placeholder="What needs to be done?"
+              />
+            </div>
+            <ul class="list-group" id="listaTareas"></ul>
+            <p id="counterTasks"></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4"></div>
     </div>
   </body>
 </html>
