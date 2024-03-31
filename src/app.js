@@ -5,10 +5,6 @@ import "./style.css";
 import "./assets/img/rigo-baby.jpg";
 import "./assets/img/4geeks.ico";
 
-window.onload = function() {
-  //write your code here
-};
-
 let listaTareas = document.querySelector("ul");
 let counter = 0;
 let tareas = [];
@@ -24,6 +20,7 @@ document.getElementById("agregarTarea").addEventListener("click", e => {
 
   // Llamamos la funcion de renderizar
   renderizarTareas();
+  ContarTareas("suma");
 });
 
 // Funcion window hace que sea global para toda la pagina
@@ -36,6 +33,7 @@ window.borrarTarea = function() {
   tareas.splice(i, 1);
   // Llamamos la funcion renderizar
   renderizarTareas();
+  ContarTareas("resta");
 };
 
 // La funcion renderizar basicamente lo que hace es recargar la lista de ul en base al array de tareas
@@ -47,5 +45,22 @@ function renderizarTareas() {
     listaTareas.innerHTML += `<li>${tarea}<i class="fa-solid fa-xmark" onclick="borrarTarea(${i})" style="color: #ff3300;"></i></li>`;
   });
 }
+window.ContarTareas = function(tipo) {
+  let contador = document.getElementById("counterTasks").value;
+  switch (tipo) {
+    case "suma":
+      tareas.forEach(i => {
+        contador++;
+      });
+      break;
+    case "resta":
+      tareas.forEach(i => {
+        contador--;
+      });
+    default:
+      break;
+  }
 
+  document.getElementById("counterTasks").innerHTML = contador;
+};
 window.onload = renderizarTareas();
