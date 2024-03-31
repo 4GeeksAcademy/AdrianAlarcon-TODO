@@ -1,1 +1,11 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
+
+.list-group-item i {
+  color: #ff3300;
+  cursor: pointer;
+  font-size: 24px;
+  display: none;
+}
+.list-group-item:hover i {
+  display: inline-block;
+}

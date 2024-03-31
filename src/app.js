@@ -50,7 +50,7 @@ function renderizarTareas() {
   listaTareas.innerHTML = "";
   // Por cada elemento en el array de tareas, creamos un elemento li con un texto y un <i> dentro que contiene el onlcick de la funcion borrar
   tareas.forEach((tarea, i) => {
-    listaTareas.innerHTML += `<li class="list-group-item">${tarea}<i class="fa-solid fa-xmark" onclick="borrarTarea(${i})" style="color: #ff3300;"></i></li>`;
+    listaTareas.innerHTML += `<li class="list-group-item d-flex justify-content-between align-items-center">${tarea}<i class="fa-solid fa-xmark" onclick="borrarTarea(${i})"></i></li>`;
   });
 }
 
