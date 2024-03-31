@@ -10,19 +10,24 @@ let counter = 0;
 let tareas = [];
 
 // Listener para cuadno le damos click a añadir nueva tarea
-document.getElementById("agregarTarea").addEventListener("click", e => {
+document.getElementById("agregarTarea").addEventListener("click", agregarTarea);
+document.getElementById("introducirTarea").addEventListener("keypress", e => {
+  if (e.key === "Enter") {
+    agregarTarea();
+  }
+});
+
+function agregarTarea() {
   // Cogemos el valor del input
   let nuevaTarea = document.getElementById("introducirTarea").value;
   // Subimos el valor al array
   tareas.push(nuevaTarea);
   // Borramos el contenido del input
   document.getElementById("introducirTarea").value = "";
-
   // Llamamos la funcion de renderizar
   renderizarTareas();
   ContarTareas("suma");
-});
-
+}
 // Funcion window hace que sea global para toda la pagina
 window.borrarTarea = function() {
   // Con el click lo que hacemos es declarar el padre del elemento que estemos pulsando
