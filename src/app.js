@@ -20,13 +20,17 @@ document.getElementById("introducirTarea").addEventListener("keypress", e => {
 function agregarTarea() {
   // Cogemos el valor del input
   let nuevaTarea = document.getElementById("introducirTarea").value;
-  // Subimos el valor al array
-  tareas.push(nuevaTarea);
-  // Borramos el contenido del input
-  document.getElementById("introducirTarea").value = "";
-  // Llamamos la funcion de renderizar
-  renderizarTareas();
-  ContarTareas("suma");
+  if (nuevaTarea !== "") {
+    // Subimos el valor al array
+    tareas.push(nuevaTarea);
+    // Borramos el contenido del input
+    document.getElementById("introducirTarea").value = "";
+    // Llamamos la funcion de renderizar
+    renderizarTareas();
+    ContarTareas("suma");
+  } else {
+    alert("Introduzca una tarea...");
+  }
 }
 // Funcion window hace que sea global para toda la pagina
 window.borrarTarea = function() {
